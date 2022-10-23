@@ -16,4 +16,4 @@ jobs:
     steps:
       # Runs a single command using the runners shell
       - name: Trigger
-        run: curl -X POST -H "Accept:application/vnd.github+json " -H "Authorization:Bearer ${{secrets.GH_TOKEN}}" https://api.github.com/repos/blaufuss/test_project_build_docker/dispatches -d '{"event_type":"on-demand-test","client_payload":{"unit":false,"integration":true}}'
+        run: curl -X POST -H "Accept:application/vnd.github+json " -H "Authorization:Bearer ${{secrets.GH_TOKEN}}" https://api.github.com/repos/blaufuss/test_project_build_docker/dispatches -d '{"event_type":"on-demand-test","client_payload":{"unit":false,"integration":true, "mine":"versions"}}'
