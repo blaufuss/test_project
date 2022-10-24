@@ -16,12 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: GitHub Tag Name example
-	run: |
+	run: >
          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
       # Runs a single command using the runners shell
       - name: Trigger
         run: curl -X POST -H "Accept:application/vnd.github+json " \
-	-H "Authorization:Bearer ${{secrets.GH_TOKEN}}" \
-	https://api.github.com/repos/blaufuss/test_project_build_docker/dispatches \
-	-d '{"event_type":"on-demand-test","client_payload":{"tag":${{ github.ref_name }},"mine":"versions"}}'
+	  -H "Authorization:Bearer ${{secrets.GH_TOKEN}}" \
+	  https://api.github.com/repos/blaufuss/test_project_build_docker/dispatches \
+	  -d '{"event_type":"on-demand-test","client_payload":{"tag":${{ github.ref_name }},"mine":"versions"}}'
